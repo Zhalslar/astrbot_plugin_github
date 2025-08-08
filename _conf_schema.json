@@ -1,0 +1,27 @@
+{
+  "repositories": {
+    "description": "要监控的GitHub仓库列表",
+    "type": "list",
+    "hint": "支持多种格式：完整URL (https://github.com/owner/repo)、短格式 (owner/repo)、仅填作者名表示监控其名下的所有公开仓库",
+    "default": []
+  },
+  "target_sessions": {
+    "description": "接收通知的目标会话列表",
+    "type": "list", 
+    "hint": "填写要接收星标变动通知的会话ID。可以通过/sid获取。每行一个会话ID。",
+    "default": []
+  },
+  "github_token": {
+    "description": "GitHub Personal Access Token",
+    "type": "string",
+    "hint": "用于避免API限制。建议使用精细令牌(Fine-grained token)，只需要读取权限。不填写将使用未认证请求(60次/小时限制)。",
+    "default": "",
+    "obvious_hint": true
+  },
+  "check_interval": {
+    "description": "检查间隔时间（秒）",
+    "type": "int",
+    "hint": "每隔多少秒检查一次仓库星标变化。有Token时建议30-60秒，无Token时建议120秒以上。",
+    "default": 60
+  }
+}
