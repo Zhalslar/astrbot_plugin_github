@@ -50,10 +50,6 @@ git clone https://github.com/Zhalslar/astrbot_plugin_search_video
 
 ### 指令表
 
-|     命令      |      说明       |
-|:-------------:|:-----------------------------:|
-| repositories   | 必填  | 要监控的GitHub仓库列表
-
 ### 示例图
 
 ## 👥 贡献指南
