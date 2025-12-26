@@ -1,5 +1,6 @@
 import json
 from pathlib import Path
+
 from astrbot.api import logger
 
 
@@ -13,7 +14,7 @@ class JsonStorage:
     def load(self) -> dict:
         if self.file.exists():
             try:
-                with open(self.file, "r", encoding="utf-8") as f:
+                with open(self.file, encoding="utf-8") as f:
                     return json.load(f)
             except Exception:
                 pass

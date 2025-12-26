@@ -5,11 +5,11 @@
 
 # astrbot_plugin_github
 
-_✨ [astrbot](https://github.com/AstrBotDevs/AstrBot) github插件 ✨_  
+_✨ github插件 ✨_  
 
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+[![License](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.html)
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://www.python.org/)
-[![AstrBot](https://img.shields.io/badge/AstrBot-3.4%2B-orange.svg)](https://github.com/Soulter/AstrBot)
+[![AstrBot](https://img.shields.io/badge/AstrBot-4.0%2B-orange.svg)](https://github.com/Soulter/AstrBot)
 [![GitHub](https://img.shields.io/badge/作者-Zhalslar-blue)](https://github.com/Zhalslar)
 
 </div>
@@ -20,31 +20,13 @@ _✨ [astrbot](https://github.com/AstrBotDevs/AstrBot) github插件 ✨_
 
 ## 📦 安装
 
-在astrbot的插件市场搜索astrbot_plugin_github，点击安装，等待完成即可。如果安装失败还可以直接克隆源码到插件文件夹：
-
-```bash
-# 克隆仓库到插件目录
-cd /AstrBot/data/plugins
-git clone https://github.com/Zhalslar/astrbot_plugin_search_video
-
-# 控制台重启AstrBot
-```
+在astrbot的插件市场搜索astrbot_plugin_github，点击安装即可
 
 ## ⚙️ 配置
 
 ### 插件配置
 
 请在astrbot面板配置，插件管理 -> astrbot_plugin_github -> 操作 -> 插件配置
-
-| 配置项                    | 必填/选填 | 说明                                                                                     |
-|-------------------------|-----------|----------------------------------------------------------------------------------------|
-| `repositories`          | 必填      | 要监控的 GitHub 仓库列表，支持完整 URL（如 `https://github.com/owner/repo`）或短格式（如 `owner/repo`），仅填owner表示监控所有owner的仓库。 |
-| `target_sessions`       | 必填      | 接收通知的目标会话 unified_msg_origin 列表。<br>获取方式：发送消息后查看日志中对应的 unified_msg_origin。   |
-| `github_token`          | 强烈推荐  | GitHub 的 Personal Access Token，用于提高请求上限（认证后可达 5000 次/小时）。<br>仅需授予 **Metadata: Read** 权限。 |
-| `check_interval`        | 可选      | 检查 GitHub 更新的时间间隔（单位：秒）。<br>建议：有 Token 时设为 30~60 秒，无 Token 时设为 120 秒以上。     |
-| `enable_startup_notification` | 可选      | 插件启动时是否发送通知。默认为 `true`。<br>注意：若要显示详细用户信息，需配置 GitHub Token。          |
-
-| /     | 。。。  |
 
 ## ⌨️ 使用说明
 
