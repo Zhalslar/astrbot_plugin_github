@@ -1,6 +1,3 @@
-
-import asyncio
-
 from astrbot.api import AstrBotConfig, logger
 from astrbot.api.event import AstrMessageEvent, filter
 from astrbot.api.star import Context, Star
@@ -35,8 +32,6 @@ class GitHubPlugin(Star):
 
         self.scheduler = GitHubScheduler(self.conf, self.service)
         self.scheduler.start()
-
-        await asyncio.create_task(self.service.parse_repositories())
 
     async def terminate(self):
         if self.scheduler:
