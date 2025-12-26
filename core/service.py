@@ -1,3 +1,5 @@
+import asyncio
+
 from astrbot.api import logger
 from astrbot.core.config.astrbot_config import AstrBotConfig
 from astrbot.core.message.components import Plain
@@ -19,6 +21,7 @@ class GitHubService:
 
         self.last_star_counts: dict[str, int] = self.storage.load()
         self.is_monitoring = False
+        asyncio.create_task(self.parse_repositories())
 
     async def parse_repositories(self) -> list[str]:
         """
@@ -67,7 +70,7 @@ class GitHubService:
         self, repo: str, total: int, diff: int, per_page: int = 25
     ) -> str | None:
         if diff <= 0:
-            return "某人"
+            return "有人"
 
         last_page = max(1, (total + per_page - 1) // per_page)
 

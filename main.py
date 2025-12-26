@@ -1,6 +1,3 @@
-
-import asyncio
-
 from astrbot.api import AstrBotConfig, logger
 from astrbot.api.event import AstrMessageEvent, filter
 from astrbot.api.star import Context, Star
@@ -25,7 +22,6 @@ class GitHubPlugin(Star):
         self.request = GitHubRequest(self.conf["token"])
         await self.request.start()
         self.service = GitHubService(self.context, self.conf, self.storage, self.request)
-        await asyncio.create_task(self.service.parse_repositories())
 
         if not self.conf["target_sessions"]:
             logger.debug("[GitHub Star Monitor] 未配置通知会话，监控任务取消")

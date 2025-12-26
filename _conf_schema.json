@@ -18,15 +18,15 @@
     "default": "",
     "obvious_hint": true
   },
-  "check_interval": {
+  "interval": {
     "description": "检查间隔时间（秒）",
     "type": "int",
-    "hint": "每隔多少秒检查一次仓库星标变化。有Token时建议30-60秒，无Token时建议120秒以上。",
+    "hint": "每隔多少秒检查一次仓库星标变化。无Token时建议设大点，避免被GitHub限制",
     "slider": {
-      "min": 30,
-      "max": 600,
+      "min": 60,
+      "max": 3600,
       "step": 60
     },
-    "default": 60
+    "default": 300
   }
 }
