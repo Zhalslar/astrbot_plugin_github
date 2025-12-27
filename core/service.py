@@ -97,24 +97,33 @@ class GitHubService:
                     continue
 
                 current = info.get("stargazers_count")
-                last = self.last_star_counts.setdefault(repo, 0)
-
-                if current is None or last is None:
+                if current is None:
                     continue
 
-                if current != last:
-                    diff = current - last
-                    users = await self.get_star_change_users(repo, current, diff)
-
+                # —— 首次写入：只记录，不推送 ——
+                if repo not in self.last_star_counts:
                     self.last_star_counts[repo] = current
                     self.storage.save(self.last_star_counts)
+                    logger.debug(f"[GitHub Star Monitor] 初始化 {repo} = {current}")
+                    continue
 
-                    messages.append(
-                        f"{repo.split('/')[-1]}："
-                        f"{users}{'点了⭐' if diff > 0 else '取消了⭐'}，当前{current}⭐"
-                    )
+                last = self.last_star_counts[repo]
 
-                    logger.info(f"[GitHub Star Monitor] {repo}: {last} → {current}")
+                if current == last:
+                    continue
+
+                diff = current - last
+                users = await self.get_star_change_users(repo, current, diff)
+
+                self.last_star_counts[repo] = current
+                self.storage.save(self.last_star_counts)
+
+                messages.append(
+                    f"{repo.split('/')[-1]}："
+                    f"{users}{'点了⭐' if diff > 0 else '取消了⭐'}，当前{current}⭐"
+                )
+
+                logger.info(f"[GitHub Star Monitor] {repo}: {last} → {current}")
 
         finally:
             self.is_monitoring = False
